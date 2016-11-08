@@ -22,3 +22,7 @@
 3. open your newly created file and copy+paste the code you've been working on in your browser
 4. save and close your html file and open it with your browser
 5. watch and be amazed!!!
+
+## taking a look at JSON
+1. go to http://www.w3schools.com/js/js_json_intro.asp
+2. go to open your html file with your text editor and let's see what JSON is all about

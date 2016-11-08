@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#button {color: blue;}
+
+</style>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+</head>
+<body>
+
+<p id="demo">Click the button to change the layout of this paragraph</p>
+
+<script>
+function myFunction() 
+{
+    var x = document.getElementById("demo");
+    x.style.fontSize = "25px";
+    x.style.color = "red";
+
+    myData= [2,2,2]//[2,2,2,215,12,125,125,1,25,12,51,25,125];
+    
+    d3.select("body")
+      .selectAll("p")
+      .data(myData)
+        .text(function(d) { return "I’m number " + d + "!"; })  // update
+        .enter().append("p").text(function(d) { return "I’m number " + d + "!"; })
+      .exit().remove() // exit
+
+    d3.select("#vis").selectAll("rect")
+    .data(myData) //update
+      .style("fill","steelblue")
+          .style("width","10px")
+          .style("height", function(d,i) {return d} )
+          .style("x", function (d,i){ return 15*i} )
+          .style("y", "0" )
+    .enter()      // enter
+      .append("rect")
+          .style("fill","steelblue")
+          .style("width","10px")
+          .style("height", function(d,i) {return d} )
+          .style("x", function (d,i){ return 15*i} )
+          .style("y", "0" )
+    d3.select("#vis").selectAll("rect").data(myData).exit().remove();//exit
+      
+}
+
+d3.selectAll('p').style("color", "green")
+
+var myData= [4, 8, 15, 16, 23, 42];
+
+d3.select("body")
+  .selectAll("p")
+  .data(myData)
+.text(function(d) { return "I’m number " + d + "!"; })
+  .enter().append("p").transition()
+    .duration(1000)
+    .delay(function(d, i) { return i * 100; })
+    .text(function(d) { return "I’m number " + d + "!"; });
+
+</script>
+
+<button id="button" onclick="myFunction()">Click Me!</button>
+<button id="button2" onclick="randomData()">randomData</button>
+<br>
+<svg id="vis" width="500" height="500">
+
+<script>
+
+ var graph = d3.select("#vis").selectAll("rect")
+    .data(myData)
+    .enter()
+      .append("rect")
+          .style("fill","steelblue")
+          .style("width","10px")
+          .style("height", function(d,i) {return d} )
+          .style("x", function (d,i){ return 15*i} )
+          .style("y", "0" )
+
+function randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function randomData(){
+    
+    var newDataset = [];
+    var count = randomInt(1,15);
+
+    for(var i = 0; i<= count; i++)
+    {
+      newDataset.push(randomInt(5,500));
+    }
+
+    
+
+    d3.select("#vis").selectAll("rect")
+    .data(newDataset)
+      .style("fill","steelblue")
+          .style("width","10px")
+          .style("height", function(d,i) {return d} )
+          .style("x", function (d,i){ return 15*i} )
+          .style("y", "0" )
+    .enter()
+      .append("rect")
+          .style("fill","steelblue")
+          .style("width","10px")
+          .style("height", function(d,i) {return d} )
+          .style("x", function (d,i){ return 15*i} )
+          .style("y", "0" )
+    
+    d3.select("#vis").selectAll("rect").data(newDataset).exit().remove();
+}
+
+</script>
+
+</body>
+</html>
+
