@@ -3,7 +3,10 @@
 
 ## HTML, CSS, JS, JSON reference
 - all you need to know to get started is here (http://www.w3schools.com/)
-- JSON (http://www.w3schools.com/js/js_json_intro.asp)
+- [HTML] (http://www.w3schools.com/html/default.asp)
+- [CSS] (http://www.w3schools.com/css/default.asp)
+- [JavaScript] (http://www.w3schools.com/js/default.asp)
+- [JSON] (http://www.w3schools.com/js/js_json_intro.asp)
 
 ## [D3js] (https://d3js.org/)
 - getting started info (https://d3js.org/)
